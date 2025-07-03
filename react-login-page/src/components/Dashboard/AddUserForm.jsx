@@ -42,6 +42,8 @@
 
 import { useState } from "react";
 import "./AddUserForm.css"; // Import the custom CSS
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 function AddUserForm({ onAddUser }) {
   const [username, setUsername] = useState('');
@@ -58,7 +60,10 @@ function AddUserForm({ onAddUser }) {
   };
 
   return (
+    
     <form onSubmit={handleSubmit} className="form-container">
+      <div className="input-wrapper">
+        <FontAwesomeIcon icon={faEnvelope} className="input-icons" />
       <input
         type="email"
         placeholder="Enter email"
@@ -66,6 +71,10 @@ function AddUserForm({ onAddUser }) {
         onChange={(e) => setEmail(e.target.value)}
         className="form-input"
       />
+      </div>
+
+      <div className="input-wrapper"> 
+        <FontAwesomeIcon icon={faUser} className="input-icons" />
       <input
         type="text"
         placeholder="Enter username"
@@ -73,6 +82,10 @@ function AddUserForm({ onAddUser }) {
         onChange={(e) => setUsername(e.target.value)}
         className="form-input"
       />
+      </div>
+
+      <div className="input-wrapper"> 
+        <FontAwesomeIcon icon={faLock} className="input-icons" />
       <input
         type="password"
         placeholder="Enter password"
@@ -80,6 +93,8 @@ function AddUserForm({ onAddUser }) {
         onChange={(e) => setPassword(e.target.value)}
         className="form-input"
       />
+      </div>
+
       <button type="submit" className="submit-btn">Add User</button>
     </form>
   );

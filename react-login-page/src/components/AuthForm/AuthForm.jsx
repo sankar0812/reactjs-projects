@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'; // ✅ import toast
 import 'react-toastify/dist/ReactToastify.css'; // ✅ import styles
 import './AuthForm.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 import loginLogo from '../../assets/logo/login.png';
 import signupLogo from '../../assets/logo/signup.png';
@@ -62,6 +64,8 @@ function AuthForm({ mode }) {
 
         <form onSubmit={handleSubmit} className="auth-form">
           {mode === 'signup' && (
+            <div className="input-wrapper">
+            <FontAwesomeIcon icon={faUser} className="input-icon" />
             <input
               type="text"
               placeholder="Username"
@@ -70,8 +74,11 @@ function AuthForm({ mode }) {
               className="auth-input"
               required
             />
+            </div>
           )}
 
+          <div className="input-wrapper">
+            <FontAwesomeIcon icon={faEnvelope} className="input-icon" />
           <input
             type="email"
             placeholder="Email"
@@ -80,7 +87,10 @@ function AuthForm({ mode }) {
             className="auth-input"
             required
           />
+          </div>
 
+          <div className="input-wrapper">
+            <FontAwesomeIcon icon={faLock} className="input-icon" />  
           <input
             type="password"
             placeholder="Password"
@@ -89,7 +99,7 @@ function AuthForm({ mode }) {
             className="auth-input"
             required
           />
-
+          </div>
           <button type="submit" className="auth-button">
             {mode === 'signin' ? 'Sign In' : 'Sign Up'}
           </button>

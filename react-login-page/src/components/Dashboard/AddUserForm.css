@@ -1,23 +1,26 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  margin: 20px auto;
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fefefe;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+  margin: 60px auto;
+  background: white;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.5s ease-in-out;
+  transition: transform 0.3s ease;
+  transform: translateY(0);
 }
 
 .form-input {
-  padding: 10px;
-  margin-bottom: 12px;
+  padding: 40px;
+  margin-bottom: 30px;
   border: 1px solid #aaa;
   border-radius: 4px;
   font-size: 14px;
 }
-
 .form-input:focus {
   outline: none;
   border-color: #007bff;
@@ -37,5 +40,131 @@
 
 .submit-btn:hover {
   background-color: #218838;
+  transform: scale(1.03);
+}
+
+.form-container h3 {
+  margin-bottom: 40px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #27ae60;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #219150;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* Optional slide-in effect */
+.animate-slide {
+  animation: slideInForm 0.4s ease forwards;
+}
+
+@keyframes slideInForm {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input-icons {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-100%);
+  color: #999;
+  font-size: 16px;
+}
+
+.auth-input {
+  width: 100%;        
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  padding-left: 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.auth-input.with-icon {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 35px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  padding-left: 40px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #27ae60;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+  background-color: #219150;
   transform: scale(1.03);
 }

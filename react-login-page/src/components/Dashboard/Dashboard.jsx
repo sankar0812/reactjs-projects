@@ -82,15 +82,118 @@
 // }
 
 
+// import { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
+// import './Dashboard.css';
+// import UserList from './UserList';
+// import AddUserForm from './AddUserForm';
+// import Navbar from './Navbar';
+
+
+// export default function Dashboard() {
+//   const [users, setUsers] = useState([]);
+//   const [view, setView] = useState('list');
+//   const navigate = useNavigate();
+
+//   const token = localStorage.getItem('token');
+
+//   useEffect(() => {
+//     if (!token) {
+//       navigate('/login');
+//     } else {
+//       fetchUsers();
+//     }
+//   }, [navigate, token]);
+
+//   const handleLogout = () => {
+//     localStorage.removeItem('token');
+//     navigate('/login');
+//   };
+
+//   const fetchUsers = async () => {
+//     try {
+//       const res = await axios.get('http://localhost:3000/auth/users', {
+//         headers: { Authorization: `Bearer ${token}` }
+//       });
+//       console.log('Fetched users:', res.data); // ✅ Helpful for debugging
+//       setUsers(res.data.users || res.data); // ✅ Safer data handling
+//     } catch (err) {
+//       console.error('Error fetching users:', err);
+//     }
+//   };
+
+//   const addUser = async ({email, username, password }) => {
+//     try {
+//       const res = await axios.post(
+//         'http://localhost:3000/auth/register',
+//         {email, username, password },
+//         { headers: { Authorization: `Bearer ${token}` } }
+//       );
+//       setUsers((prev) => [...prev, res.data]);
+//     } catch (err) {
+//       console.error('Error adding user:', err);
+//     }
+//   };
+
+//   const updateUser = async (updatedUser) => {
+//     try {
+//       await axios.put(
+//         `http://localhost:3000/auth/users/${updatedUser._id}`,
+//         updatedUser,
+//         { headers: { Authorization: `Bearer ${token}` } }
+//       );
+//       setUsers((prev) =>
+//         prev.map((u) => (u._id === updatedUser._id ? updatedUser : u))
+//       );
+//     } catch (err) {
+//       console.error('Error updating user:', err);
+//     }
+//   };
+
+//   const deleteUser = async (id) => {
+//     try {
+//       await axios.delete(`http://localhost:3000/auth/users/${id}`, {
+//         headers: { Authorization: `Bearer ${token}` }
+//       });
+//       setUsers((prev) => prev.filter((u) => u._id !== id));
+//     } catch (err) {
+//       console.error('Error deleting user:', err);
+//     }
+//   };
+
+//   return (
+//     <div className="dashboard-container">
+//       <div className="dashboard-card">
+//         <Navbar setView={setView} />
+//         <h1 className="dashboard-title">Welcome to your Dashboard!</h1>
+//         <p className="dashboard-message">You have successfully logged in.</p>
+
+//         <AddUserForm onAddUser={addUser} />
+//         <p className="dashboard-note">Manage your users below:</p>
+//         <UserList users={users} onDeleteUser={deleteUser} onUpdateUser={updateUser} />
+
+//         <button className="logout-button" onClick={handleLogout}>
+//           Logout
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
+
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Dashboard.css';
+import Sidebar from './Navbar';
 import UserList from './UserList';
-import AddUserForm from './AddUserForm'; // ✅ Added missing import
+import AddUserForm from './AddUserForm';
+import AnimatedSidebar from './AnimatedSidebar';
 
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
+  const [view, setView] = useState('');
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
@@ -112,21 +215,21 @@ export default function Dashboard() {
       const res = await axios.get('http://localhost:3000/auth/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      console.log('Fetched users:', res.data); // ✅ Helpful for debugging
-      setUsers(res.data.users || res.data); // ✅ Safer data handling
+      setUsers(res.data.users || res.data);
     } catch (err) {
       console.error('Error fetching users:', err);
     }
   };
 
-  const addUser = async ({email, username, password }) => {
+  const addUser = async ({ email, username, password }) => {
     try {
       const res = await axios.post(
         'http://localhost:3000/auth/register',
-        {email, username, password },
+        { email, username, password },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setUsers((prev) => [...prev, res.data]);
+      setView('list'); // switch to list after adding
     } catch (err) {
       console.error('Error adding user:', err);
     }
@@ -158,23 +261,26 @@ export default function Dashboard() {
     }
   };
 
+  const renderView = () => {
+    if (view === 'add') return <AddUserForm onAddUser={addUser} />;
+    return (
+      <>
+        <p className="dashboard-note">Manage your users below</p>
+        <UserList users={users} onDeleteUser={deleteUser} onUpdateUser={updateUser} />
+        
+      </>
+    );
+  };
+
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-card">
+    <div className="dashboard-layout">
+      <Sidebar onViewChange={setView} onLogout={handleLogout} />
+      {/* <AnimatedSidebar onViewChange={setView} onLogout={handleLogout} /> */}
+      <div className="dashboard-main">
         <h1 className="dashboard-title">Welcome to your Dashboard!</h1>
         <p className="dashboard-message">You have successfully logged in.</p>
-
-        <AddUserForm onAddUser={addUser} />
-        <p className="dashboard-note">Manage your users below:</p>
-        <UserList users={users} onDeleteUser={deleteUser} onUpdateUser={updateUser} />
-
-        <button className="logout-button" onClick={handleLogout}>
-          Logout
-        </button>
+        {renderView()}
       </div>
     </div>
   );
 }
-
-
-
