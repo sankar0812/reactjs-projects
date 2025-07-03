@@ -1,0 +1,67 @@
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #aec4b4; */
+  background: linear-gradient(to right, #a8b9b2, #6caa8c);;
+}
+
+.dashboard-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dashboard-title {
+  font-size: 1.75rem;
+  color: #047857; /* Green-700 */
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.dashboard-message {
+  color: #374151; /* Gray-700 */
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.logout-button {
+  padding: 0.6rem 1.2rem;
+  background-color: #ef4444; /* Red-500 */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #dc2626; /* Red-600 */
+}
+.bg-gradient {
+  background: linear-gradient(to right, #9ec4a7, #88b3a1);
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.animate-btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
