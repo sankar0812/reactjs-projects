@@ -1,0 +1,131 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.header, .footer {
+  background-color: #53b088;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+nav a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.hotel-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px;
+}
+
+.hotel-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  width: 300px;
+  padding: 15px;
+  text-align: center;
+}
+
+.hotel-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.booking-form input {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.hotel-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.hotel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.hotel-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.hotel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.booking-form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: auto;
+}
+
+.booking-form input,
+.booking-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.booking-form button {
+  background-color: #003366;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.booking-form button:hover {
+  background-color: #0055aa;
+}
+
+.book-btn {
+  background-color: #53b088;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+  background-color: #3b8f6e;
+}

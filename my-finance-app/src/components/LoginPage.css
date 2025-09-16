@@ -1,0 +1,144 @@
+/* src/components/LoginPage.css */
+
+.login-page-container {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background: linear-gradient(to right, #9e5ce5 0%, #c8dcff 100%); /* Linear gradient background */
+  min-height: 50vh; /* Full viewport height */
+  width: 100%; /* Ensure it takes full width */
+}
+
+.login-content-wrapper {
+  display: flex; /* Use flexbox to arrange image and card side-by-side */
+  background-color: #fff; /* White background for the entire wrapper */
+  border-radius: 0.85rem; /* Rounded corners for the wrapper */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Shadow for the wrapper */
+  overflow: hidden; /* Ensures rounded corners clip content */
+  /* Adjusted max-width and width for better filling of space */
+  max-width: 80%; /* Allow it to be wider on large screens */
+  width: auto; /* Let content determine width, or use a fixed large width if desired */
+  margin: 18rem; /* Add some margin around the wrapper */
+}
+
+@media (min-width: 1024px) { /* For larger screens, increase max-width */
+  .login-content-wrapper {
+    max-width: 1000px; /* Example: increase max-width for very large screens */
+    width: 90%; /* Keep a percentage for responsiveness */
+  }
+}
+
+
+.login-image-container {
+  flex: 1; /* Takes up available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem; /* Padding around the image */
+  background-color: #f0f4f8; /* Light background for the image side */
+}
+
+.login-image {
+  max-width: 100%; /* Ensure image fits container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 0.5rem; /* Slightly rounded corners for the image itself */
+}
+
+.login-card {
+  flex: 1; /* Takes up available space */
+  background-color: #fff; /* White card background */
+  padding: 2.5rem; /* Spacious padding */
+  text-align: center;
+  box-sizing: border-box; /* Include padding in width calculation */
+  /* Removed margin: 10rem; and align-items: center; from here as they are handled by .login-content-wrapper */
+}
+
+.login-title {
+  font-size: 2rem; /* Large title font size */
+  font-weight: 700; /* Bold font weight */
+  margin-bottom: 1.5rem; /* Space below title */
+  color: #1f2937; /* Dark gray text color */
+}
+
+.login-form-group {
+  margin-bottom: 1rem; /* Space between form groups */
+  text-align: left; /* Align labels and inputs to the left */
+}
+
+.login-form-group label {
+  display: block; /* Make label a block element */
+  font-size: 0.875rem; /* Small font size for labels */
+  font-weight: 500; /* Medium font weight */
+  color: #374151; /* Medium gray text color */
+  margin-bottom: 0.5rem; /* Space below label */
+}
+
+.login-form-group input {
+  width: 100%; /* Full width input */
+  padding: 0.75rem; /* Padding inside input */
+  border: 1px solid #d1d5db; /* Light gray border */
+  border-radius: 0.5rem; /* Rounded input corners */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.login-form-group input:focus {
+  outline: none; /* Remove default outline */
+  border-color: #3b82f6; /* Blue border on focus */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25); /* Blue shadow on focus */
+}
+
+.login-error {
+  color: #dc2626; /* Red error text */
+  font-size: 0.875rem; /* Small font size for error */
+  margin-top: 1rem; /* Space above error message */
+}
+
+.login-button {
+  background-color: #2563eb; /* Blue button background */
+  color: #fff; /* White text color */
+  font-weight: 700; /* Bold font weight */
+  padding: 0.75rem 1.5rem; /* Padding inside button */
+  border-radius: 0.5rem; /* Rounded button corners */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+  width: 100%; /* Full width button */
+  margin-top: 1.5rem; /* Space above button */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition on hover */
+}
+
+.login-button:hover {
+  background-color: #1d4ed8; /* Darker blue on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .login-content-wrapper {
+    flex-direction: column; /* Stack image and card vertically on smaller screens */
+    max-width: 400px; /* Limit width to card size on smaller screens */
+    width: 95%; /* Adjust width for better mobile fit */
+    margin: 1rem; /* Adjust margin for smaller screens */
+  }
+
+  .login-image-container {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .login-image {
+    max-height: 150px; /* Limit image height on smaller screens */
+    object-fit: contain; /* Ensure image is fully visible */
+  }
+
+  .login-card {
+    padding: 1.5rem; /* Reduce padding on very small screens */
+  }
+  .login-title {
+    font-size: 1.75rem; /* Slightly smaller title on small screens */
+  }
+  .login-logo
+  {
+    width: 5px; /* Adjust logo size for smaller screens */
+    height: 5px; /* Maintain aspect ratio */
+    margin-bottom: 1rem; /* Space below logo */
+  }
+}
